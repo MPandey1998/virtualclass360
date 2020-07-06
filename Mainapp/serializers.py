@@ -16,6 +16,12 @@ class Intrest_Categoryserilazers(serializers.ModelSerializer):
     class Meta:
         model=Intrest_Category
         fields= "__all__"
+
+class Home_Categoryserilazers(serializers.ModelSerializer):
+            class Meta:
+                model = Home_Category
+                fields = "__all__"
+
 class Intrest_Sub_Categoryserilazers(serializers.ModelSerializer):
     class Meta:
         model=Intrest_Sub_Category
