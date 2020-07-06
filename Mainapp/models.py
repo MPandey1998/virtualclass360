@@ -26,6 +26,18 @@ class Intrest_Category(models.Model):
         verbose_name = "Intrest Category"
 
 
+class Home_Category(models.Model):
+    Category_Name=models.CharField(max_length=100)
+    Category_Image=models.ImageField(upload_to='images/category')
+    Created_date_time=models.DateTimeField(auto_now_add=True)
+    Category = models.ForeignKey(Intrest_Category, on_delete=models.CASCADE, null=True)
+    def __str__(self):
+        return self.Category_Name
+
+    class Meta:
+        verbose_name = "Home Category"
+
+
 class Intrest_Sub_Category(models.Model):
     Category=models.ForeignKey(Intrest_Category,on_delete=models.CASCADE,null=True)
     Sub_Category_Name=models.CharField(max_length=100)
@@ -56,11 +68,12 @@ class Users(models.Model):
 
 
 class Videos(models.Model):
-    Titel=models.CharField(max_length=100)
+    Titel=models.CharField(max_length=101)
     Category=models.ForeignKey(Intrest_Category,on_delete=models.CASCADE,null=True)
     Videos=models.FileField(upload_to='videos')
-    Author_Name=models.CharField(max_length=1000)
-    Descriptions=models.TextField(max_length=3000)
+    Author_Name=models.CharField(max_length=1001)
+    Descriptions=models.TextField(max_length=3001)
+    thumb=models.ImageField(blank=True)
 
     def __str__(self):
         return self.Titel
